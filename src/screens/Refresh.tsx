@@ -3,7 +3,7 @@ import { Text, View, Pressable } from "react-native";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../lib/firebase";
 
-export default function Refresh(){
+export default function Refresh({ navigation }: any){
 
 const [notes,setNotes] = useState<any[]>([])
 
@@ -26,9 +26,9 @@ text:n.data().text
 
 return(
 
-<View>
+<View style={{padding:20,gap:10}}>
 
-<Pressable onPress={refreshNotes}>
+<Pressable onPress={refreshNotes} style={{borderWidth:1,padding:10}}>
 <Text>Recarregar</Text>
 </Pressable>
 
@@ -36,7 +36,12 @@ return(
 <Text key={n.id}>- {n.text}</Text>
 ))}
 
+<Pressable onPress={()=> navigation.navigate("Lista")} style={{borderWidth:1,padding:10}}>
+<Text>Voltar</Text>
+</Pressable>
+
 </View>
 
 )
+
 }

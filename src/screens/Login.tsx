@@ -3,7 +3,7 @@ import { Text, TextInput, View, Pressable } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../lib/firebase";
 
-export default function Login({ navigation }: any) {
+export default function Login({ navigation }: any){
 
 const [email,setEmail] = useState("");
 const [password,setPassword] = useState("");
@@ -19,14 +19,17 @@ async function handleLogin(){
 }
 
 return(
-<View>
 
-<Text>LOGIN</Text>
+<View style={{padding:20,gap:10}}>
+
+<Text style={{fontSize:20}}>LOGIN</Text>
 
 <TextInput
 placeholder="Email"
 value={email}
 onChangeText={setEmail}
+autoCapitalize="none"
+style={{borderWidth:1,padding:10}}
 />
 
 <TextInput
@@ -34,16 +37,19 @@ placeholder="Senha"
 secureTextEntry
 value={password}
 onChangeText={setPassword}
+style={{borderWidth:1,padding:10}}
 />
 
-<Pressable onPress={handleLogin}>
+<Pressable onPress={handleLogin} style={{borderWidth:1,padding:10}}>
 <Text>Entrar</Text>
 </Pressable>
 
-<Pressable onPress={()=> navigation.navigate("Cadastro")}>
+<Pressable onPress={()=> navigation.navigate("Cadastro")} style={{borderWidth:1,padding:10}}>
 <Text>Criar conta</Text>
 </Pressable>
 
 </View>
+
 )
+
 }
